@@ -1,0 +1,296 @@
+{% extends 'base.html' %} {% block content %} {% if user.is_authenticated %}
+
+<main class="layout layout--3">
+  <div class="container">
+    <!-- Topics Start -->
+    {% include 'topics_component.html' %}
+
+    <!-- Topics End -->
+
+    <!-- Room List Start -->
+    <div class="roomList">
+      <div class="mobile-menu">
+        <form action="{% url 'home' %}" method="GET" class="header__search">
+          <label>
+            <svg
+              version="1.1"
+              xmlns="http://www.w3.org/2000/svg"
+              width="32"
+              height="32"
+              viewBox="0 0 32 32"
+            >
+              <title>search</title>
+              <path
+                d="M32 30.586l-10.845-10.845c1.771-2.092 2.845-4.791 2.845-7.741 0-6.617-5.383-12-12-12s-12 5.383-12 12c0 6.617 5.383 12 12 12 2.949 0 5.649-1.074 7.741-2.845l10.845 10.845 1.414-1.414zM12 22c-5.514 0-10-4.486-10-10s4.486-10 10-10c5.514 0 10 4.486 10 10s-4.486 10-10 10z"
+              ></path>
+            </svg>
+            <input name="q" placeholder="Search for posts" />
+          </label>
+        </form>
+        <div class="mobile-menuItems">
+          <a class="btn btn--main btn--pill" href="{% url 'topics' %}"
+            >Browse Topics</a
+          >
+        </div>
+      </div>
+
+      <div class="roomList__header">
+        <div>
+          <h2>Study Rooms</h2>
+          <p>{{room_count}} Rooms available</p>
+        </div>
+
+        <a class="btn btn--main" href="{% url 'create_room' %}">
+          <svg
+            version="1.1"
+            xmlns="http://www.w3.org/2000/svg"
+            width="32"
+            height="32"
+            viewBox="0 0 32 32"
+          >
+            <title>add</title>
+            <path
+              d="M16.943 0.943h-1.885v14.115h-14.115v1.885h14.115v14.115h1.885v-14.115h14.115v-1.885h-14.115v-14.115z"
+            ></path>
+          </svg>
+          Create Room
+        </a>
+      </div>
+
+      {% include 'feed_component.html' %}
+    </div>
+    <!-- Room List End -->
+
+    <!-- Activities Start -->
+    {% include 'component_activity.html' %}
+
+    <!-- Activities End -->
+  </div>
+
+  {% else %}
+
+  <style>
+    /* Basic styling for image blocks */
+    .imageblock {
+      width: 100%;
+      max-width: 200px;
+      margin: 20px;
+      display: inline-block;
+      text-align: center;
+      padding: 15px;
+      background-color: #f9f9f9;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .imageblock img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+
+    .imageblock h3 {
+      margin-top: 25px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #555;
+    }
+
+    .imageblock p {
+      font-size: 1.2rem;
+      color: #555;
+      line-height: 1.4;
+    }
+
+    /* Style for the Welcome Section */
+    .welcome-section {
+      padding: 40px 10px;
+
+      text-align: center;
+    }
+
+    .welcome-content h1 {
+      font-size: 2.5rem;
+
+      margin-bottom: 20px;
+    }
+
+    .subheading {
+      font-size: 1.5rem;
+
+      margin-bottom: 20px;
+    }
+
+    .intro-text p {
+      font-size: 1.5rem;
+
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .activities____box-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    .cta {
+      margin-top: 40px;
+    }
+
+    .cta h2 {
+      font-size: 2rem;
+      color: #2ecc71;
+    }
+
+    .cta p {
+      font-size: 1.5rem;
+
+      margin-bottom: 20px;
+    }
+
+    .cta .btn {
+      padding: 12px 20px;
+      font-size: 1.1rem;
+      color: #fff;
+      background-color: #3498db;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .cta .btn:hover {
+      background-color: #2980b9;
+    }
+
+    /* Media Queries for responsiveness */
+    @media (max-width: 1200px) {
+      .imageblock {
+        max-width: 45%;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .imageblock {
+        max-width: 90%;
+      }
+
+      .cta h2 {
+        font-size: 1.8rem;
+      }
+
+      .cta p {
+        font-size: 1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .imageblock {
+        max-width: 60%;
+        padding: 10px;
+      }
+
+      .welcome-content h1 {
+        font-size: 2.5rem;
+      }
+
+      .subheading {
+        font-size: 1.5rem;
+      }
+
+      .intro-text p {
+        font-size: 1.2rem;
+      }
+    }
+  </style>
+
+  <section class="welcome-section">
+    <div class="welcome-content">
+      <h1>Welcome to Discord</h1>
+      <p class="subheading">Group chat, that’s all fun & games</p>
+
+      <div class="intro-text">
+        <p>
+          Discord is great for playing games, chilling with friends, or even
+          building a worldwide community. Customize your own space to talk,
+          play, and hang out.
+        </p>
+        <p>
+          Whether you are here to chat, game, or share your interests, there's a
+          place for everyone. Start connecting with your community now!
+        </p>
+        <p>
+          Discover unique communities, meet new people, and be a part of
+          something bigger. There's always something happening on Discord, and
+          we can’t wait for you to join the fun!
+        </p>
+      </div>
+
+      <div class="activities____box-container">
+        <!-- Game Nights Section -->
+        <div class="imageblock">
+          <img
+            src="../static/images/icons8-game-controller-100.png"
+            alt="Game Controller"
+          />
+          <h3>Game Nights</h3>
+          <p>
+            Host or join game nights with your friends and meet new people who
+            share your gaming interests. Whether it's casual gaming or serious
+            tournaments, there's something for everyone.
+          </p>
+        </div>
+
+        <!-- Community Building Section -->
+        <div class="imageblock">
+          <img src="../static/images/image.png" alt="Community Icon" />
+          <h3>Community Building</h3>
+          <p>
+            Create and manage your community spaces where you can chat, share
+            content, and collaborate with like-minded individuals. Build your
+            group, make lasting connections, and grow your network.
+          </p>
+        </div>
+
+        <!-- Study Room Section -->
+        <div class="imageblock">
+          <img src="../static/images/study icon.jpg" alt="Study Room Icon" />
+          <h3>Create Study Room</h3>
+          <p>
+            Whether you're studying for exams, working on a group project, or
+            discussing academic topics, Discord is the perfect place to create a
+            study room. Collaborate with classmates and study efficiently!
+          </p>
+        </div>
+
+        <!-- Private Messages Section -->
+        <div class="imageblock">
+          <img src="../static/images/messageroom.png" alt="Message Icon" />
+          <h3>Private Messages</h3>
+          <p>
+            Send private messages to your friends and group members. Have
+            one-on-one conversations or chat in small groups without
+            distractions.
+          </p>
+        </div>
+      </div>
+
+      <div class="cta">
+        <h2>Get Started Today!</h2>
+        <p>
+          Login and start discovering, connecting, and chatting with others now!
+        </p>
+        <a href="{% url 'loginPage' %}" class="btn btn--main"
+          >Login to Join the Fun!</a
+        >
+      </div>
+    </div>
+  </section>
+
+  {% endif %}
+</main>
+{% endblock %}
