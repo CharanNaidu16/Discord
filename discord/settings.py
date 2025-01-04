@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-)12%jhl#zz#82l3m!%4*@=f=^fyhefzqn!8n&w8ovc@5*1jz3n
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['discord-rooms.vercel.app','127.0.0.1']
+ALLOWED_HOSTS = ['.vercel.app','127.0.0.1']
 
 
 # Application definition
