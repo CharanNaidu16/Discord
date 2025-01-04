@@ -22,7 +22,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     username = models.CharField(max_length=200,unique=True ,null=True)
     email = models.EmailField(unique=True, null=True)
     bio = models.TextField(null=True)
-    avatar = models.ImageField(null=True, default='avatar.svg')
+    avatar = models.ImageField(null=True, default='user.png')
 
     
     is_staff = models.BooleanField(default=False)
