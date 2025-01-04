@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-)12%jhl#zz#82l3m!%4*@=f=^fyhefzqn!8n&w8ovc@5*1jz3n
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['.vercel.app','.now.sh']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -133,7 +133,7 @@ BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 STATIC_URL = '/static/'
 
 # This is where Django will collect static files during the deployment process
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build','static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Static directories to be included in `collectstatic`
 STATICFILES_DIRS = [
