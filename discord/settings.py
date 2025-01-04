@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-)12%jhl#zz#82l3m!%4*@=f=^fyhefzqn!8n&w8ovc@5*1jz3n
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['discord-ptwy.vercel.app']
+ALLOWED_HOSTS = ['discord-ptwy.vercel.app','discord-ptwy-4thgcok84-charans-projects-9be82210.vercel.app']
 
 
 # Application definition
